@@ -3,17 +3,11 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 
-/**
- * GamePanel - JPanel utama tempat game dirender
- * Menggantikan GameBoard + GameController versi console
- * Role 2 - Data & Logic Engineer
- */
 public class GamePanel extends JPanel implements ActionListener {
 
-    // Ukuran board
-    static final int TILE = 25;        // ukuran tiap kotak (pixel)
-    static final int COLS = 24;        // jumlah kolom
-    static final int ROWS = 20;        // jumlah baris
+    static final int TILE = 25;        
+    static final int COLS = 24;        
+    static final int ROWS = 20;        
     static final int WIDTH  = COLS * TILE;
     static final int HEIGHT = ROWS * TILE;
 
@@ -26,10 +20,8 @@ public class GamePanel extends JPanel implements ActionListener {
     private boolean running;
     private boolean gameOver;
 
-    // Collections - ArrayList riwayat skor
     private ArrayList<Integer> scoreHistory;
 
-    // Warna
     private static final Color COLOR_BG         = new Color(15, 15, 15);
     private static final Color COLOR_GRID        = new Color(25, 25, 25);
     private static final Color COLOR_HEAD        = new Color(80, 220, 100);
@@ -54,9 +46,6 @@ public class GamePanel extends JPanel implements ActionListener {
         startGame();
     }
 
-    /**
-     * Inisialisasi / restart game
-     */
     public void startGame() {
         snake = new Snake(COLS / 2, ROWS / 2);
         apple = new Apple(COLS, ROWS);
@@ -71,9 +60,6 @@ public class GamePanel extends JPanel implements ActionListener {
         requestFocusInWindow();
     }
 
-    /**
-     * Game loop - dipanggil tiap tick Timer
-     */
     @Override
     public void actionPerformed(ActionEvent e) {
         if (running) {
@@ -83,26 +69,20 @@ public class GamePanel extends JPanel implements ActionListener {
         repaint();
     }
 
-    /**
-     * Cek semua collision
-     */
     private void checkCollisions() {
         int hx = snake.getX();
         int hy = snake.getY();
 
-        // Tabrakan dinding
         if (hx < 0 || hx >= COLS || hy < 0 || hy >= ROWS) {
             endGame();
             return;
         }
 
-        // Tabrakan tubuh sendiri
         if (snake.isSelfCollision()) {
             endGame();
             return;
         }
 
-        // Makan apel
         if (hx == apple.getX() && hy == apple.getY()) {
             snake.eatApple();
             score += 10;
@@ -124,10 +104,6 @@ public class GamePanel extends JPanel implements ActionListener {
         } while (snake.occupies(apple.getX(), apple.getY()));
     }
 
-    /**
-     * Handle input keyboard - WASD & Arrow Keys
-     * Role 3 - InputHandler
-     */
     private void handleKey(int keyCode) {
         try {
             if (gameOver) {
@@ -147,9 +123,6 @@ public class GamePanel extends JPanel implements ActionListener {
         }
     }
 
-    /**
-     * Render semua elemen game
-     */
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -168,7 +141,6 @@ public class GamePanel extends JPanel implements ActionListener {
         g.setColor(COLOR_BG);
         g.fillRect(0, 0, WIDTH, HEIGHT);
 
-        // Grid tipis
         g.setColor(COLOR_GRID);
         for (int col = 0; col <= COLS; col++)
             g.drawLine(col * TILE, 0, col * TILE, HEIGHT);
@@ -192,15 +164,12 @@ public class GamePanel extends JPanel implements ActionListener {
             int sx = seg[0] * TILE;
             int sy = seg[1] * TILE;
             if (i == 0) {
-                // Kepala
                 g.setColor(COLOR_HEAD);
                 g.fillRoundRect(sx + 1, sy + 1, TILE - 2, TILE - 2, 8, 8);
-                // Mata
                 g.setColor(Color.BLACK);
                 g.fillOval(sx + 5, sy + 6, 4, 4);
                 g.fillOval(sx + 15, sy + 6, 4, 4);
             } else {
-                // Body — makin belakang makin gelap
                 float ratio = 1f - (float) i / body.size() * 0.4f;
                 g.setColor(COLOR_BODY.darker().brighter());
                 g.fillRoundRect(sx + 2, sy + 2, TILE - 4, TILE - 4, 6, 6);
@@ -226,11 +195,9 @@ public class GamePanel extends JPanel implements ActionListener {
     }
 
     private void drawGameOver(Graphics2D g) {
-        // Overlay gelap
         g.setColor(COLOR_OVERLAY);
         g.fillRect(0, 0, WIDTH, HEIGHT + 50);
 
-        // Kotak tengah
         int bx = WIDTH / 2 - 140, by = HEIGHT / 2 - 90;
         g.setColor(new Color(30, 30, 30));
         g.fillRoundRect(bx, by, 280, 190, 20, 20);
@@ -253,7 +220,6 @@ public class GamePanel extends JPanel implements ActionListener {
         g.drawString("ENTER / R = Main Lagi", bx + 35, by + 155);
     }
 
-    // Getter untuk testing
     public int getScore() { return score; }
     public int getHighScore() { return highScore; }
     public Snake getSnake() { return snake; }
