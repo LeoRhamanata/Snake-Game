@@ -1,10 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
 
-/**
- * GameFrame - JFrame utama window game
- * Role 2 - Data & Logic Engineer
- */
 public class GameFrame extends JFrame {
 
     private GamePanel gamePanel;
@@ -16,7 +12,6 @@ public class GameFrame extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
 
-        // Panel judul
         JPanel titlePanel = new JPanel();
         titlePanel.setBackground(new Color(10, 10, 10));
         JLabel titleLabel = new JLabel("🐍 SNAKE GAME OOP");
@@ -28,7 +23,7 @@ public class GameFrame extends JFrame {
         add(gamePanel, BorderLayout.CENTER);
 
         pack();
-        setLocationRelativeTo(null); // tengah layar
+        setLocationRelativeTo(null);
         setVisible(true);
 
         gamePanel.requestFocusInWindow();
