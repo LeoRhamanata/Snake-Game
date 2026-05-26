@@ -1,44 +1,44 @@
-# 🐍 Snake Game - Final Project PBO
+# 🐍 Snake Game - OOP Final Project
 
-Ini adalah hasil kerja keras (dan begadang) buat Final Project mata kuliah **Pemrograman Berorientasi Objek (PBO)**.
-Gamenya simpel — ular makan apel, makin panjang, nabrak mati. Tapi dibaliknya ada OOP yang lumayan serius.
-
----
-
-## 🎮 Tentang Game
-
-Snake Game klasik berbasis **Java Swing (GUI)**.  
-Gerakin ular pake **WASD atau Arrow Keys**, makan apel sebanyak mungkin, jangan sampai nabrak dinding atau tubuh sendiri.
+This is the result of hard work (and some late nights) for the **Object-Oriented Programming (OOP)** Final Project.
+The game is simple — snake eats apples, grows longer, hits a wall and dies. But underneath, there's some pretty serious OOP going on.
 
 ---
 
-## 🏗️ Teknologi & Konsep yang Dipakai
+## 🎮 About the Game
 
-- **Java** — bahasa utama
-- **Java Swing** — tampilan GUI
+A classic Snake Game built with **Java Swing (GUI)**.
+Move the snake using **WASD or Arrow Keys**, eat as many apples as you can, and don't hit the walls or your own body.
+
+---
+
+## 🏗️ Tech & Concepts Used
+
+- **Java** — main language
+- **Java Swing** — GUI rendering
 - **OOP** — Inheritance, Encapsulation, Polymorphism, Abstraction
-- **Collections** — `LinkedList` untuk body ular, `ArrayList` untuk riwayat skor
-- **Exception Handling** — biar gak gampang crash
+- **Collections** — `LinkedList` for snake body, `ArrayList` for score history
+- **Exception Handling** — so it doesn't crash on us mid-game
 
 ---
 
-## 📁 Struktur File
+## 📁 File Structure
 
 ```
 TA-PBO/
 ├── Main.java          → Entry point
-├── GameFrame.java     → Window JFrame
-├── GamePanel.java     → Logic + Render game
-├── Snake.java         → Class ular
-├── Apple.java         → Class apel
+├── GameFrame.java     → JFrame window
+├── GamePanel.java     → Game logic + rendering
+├── Snake.java         → Snake class
+├── Apple.java         → Apple class
 ├── Entity.java        → Abstract superclass
-├── Movable.java       → Interface gerak
-└── SnakeTest.java     → Unit Testing JUnit 5
+├── Movable.java       → Movement interface
+└── SnakeTest.java     → JUnit 5 Unit Tests
 ```
 
 ---
 
-## ▶️ Cara Jalankan
+## ▶️ How to Run
 
 ```bash
 javac *.java
@@ -47,9 +47,9 @@ java Main
 
 ---
 
-## 📝 Catatan
+## 📝 Notes
 
-Repo ini adalah bagian dari kontribusi pribadi di kelompok Final Project PBO.
-Dikerjain dengan sepenuh hati, sesungguh-sungguhnya, dan sesekali panik sendiri.
+This repo is my personal contribution to the OOP Final Project group assignment.
+Built with full effort, genuine dedication, and occasional moments of pure panic.
 
-> *"It's not a bug, it's a feature."* — Semua programmer pernah bilang ini.
+> *"It's not a bug, it's a feature."* — Every programmer ever.
