@@ -17,9 +17,6 @@ public abstract class Entity {
     public void setY(int y) { this.y = y; }
     public void setSymbol(char symbol) { this.symbol = symbol; }
 
-    /**
-     * Abstract method render - setiap entity wajib punya representasi karakter
-     */
     public abstract char render();
 
     @Override
